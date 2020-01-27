@@ -2,9 +2,12 @@
 AC31007/AC51003 Agile Software Engineering - Group Number [x]
 
 Group Members:
-- Member 1 (Matriculation Number)
-- Member 2 (Matriculation Number)
-- Member X (Matriculation Number)
+- Oskar Jankowski (Matriculation Number)
+- Sarah Hartley (Matriculation Number)
+- Yousaf Nasir (Matriculation Number)
+- Gregor Taylor (160012442)
+- Roman Brodskiy()
+- Blazej Byczkowski()
 
 ## Hints:
 - You may wish to change the issue tags that are in GitHub to map to different activities that you are carrying out:
