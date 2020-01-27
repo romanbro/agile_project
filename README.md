@@ -7,7 +7,7 @@ Group Members:
 - Yousaf Nasir (Matriculation Number)
 - Gregor Taylor (160012442)
 - Roman Brodskiy (170009741)
-- Blazej Byczkowski()
+- Blazej Byczkowski(170019249)
 
 ## Hints:
 - You may wish to change the issue tags that are in GitHub to map to different activities that you are carrying out:
