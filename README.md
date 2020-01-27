@@ -1,5 +1,5 @@
 # AgileDevelopment_templateCWRepo
-AC31007/AC51003 Agile Software Engineering - Group Number [x]
+AC31007/AC51003 Agile Software Engineering - Group Number 14
 
 Group Members:
 - Oskar Jankowski (Matriculation Number)
