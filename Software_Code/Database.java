@@ -10,22 +10,22 @@ public class Database {
     
     public Database() throws Exception{
         // Initialize connection variables.
-        String host = "mydemoserver.mysql.database.azure.com";
-        String database = "quickstartdb";
-        String user = "myadmin@mydemoserver";
-        String password = "<server_admin_password>";
+        String host = "team14agileprojectserver.mysql.database.azure.com";
+        String database = "medicare";
+        String user = "romanb@team14agileprojectserver";
+        String password = "adminpassword1!";
+//
+//        // check that the driver is installed
+//        try
+//        {
+//            Class.forName("org.mariadb.jdbc");
+//        }
+//        catch (ClassNotFoundException e)
+//        {
+//            throw new ClassNotFoundException("MariaDB JDBC driver NOT detected in library path.", e);
+//        }
 
-        // check that the driver is installed
-        try
-        {
-            Class.forName("org.mariadb.jdbc");
-        }
-        catch (ClassNotFoundException e)
-        {
-            throw new ClassNotFoundException("MariaDB JDBC driver NOT detected in library path.", e);
-        }
-
-        System.out.println("MariaDB JDBC driver detected in library path.");
+//        System.out.println("MariaDB JDBC driver detected in library path.");
 
         connection = null;
 
@@ -47,7 +47,8 @@ public class Database {
         }
         catch (SQLException e)
         {
-            throw new SQLException("Failed to create connection to database", e);
+            System.out.println("Failed to create connection to database");
+            System.exit(1);
         }
     }
     

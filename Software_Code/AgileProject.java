@@ -5,8 +5,10 @@
  */
 package agileproject;
 
+import static java.lang.String.*;
 import java.sql.*;
 import java.util.Properties;
+import java.util.Scanner;
 
 /**
  *
@@ -18,22 +20,13 @@ public class AgileProject {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {
-        Database db = null;
-        try {
-            db = new Database();
-            dbConnection = db.getConnection();
-        }
-        catch (ClassNotFoundException e) {
-            System.out.println("MariaDB JDBC driver NOT detected in library path.");
-            System.exit(1);
-        }
-        catch (SQLException e){
-            System.out.println("Failed to create connection to database");
-            System.exit(1);
-        }
+        Database db = new Database();
+        dbConnection = db.getConnection();
         
         if(dbConnection != null) {
-            String substring = "headache"; //would be user entered
+            Scanner input = new Scanner(System.in);
+            System.out.println("Search: ");
+            String substring = input.nextLine();
             searchBySubstring(substring);
         }
 
@@ -44,13 +37,16 @@ public class AgileProject {
         substring = substring.toUpperCase();
         try {
             Statement statement = dbConnection.createStatement();
-            ResultSet results = statement.executeQuery("SELECT DISTINCT 'DRG Definition' "
-                    + "FROM 'database' "
-                    + "WHERE 'DRG Definition' LIKE '%" + substring + "%'");
-            while (results.next())
-            {
-                String outputString = String.format(results.getString(1));
-                System.out.println(outputString);
+            ResultSet results = statement.executeQuery("SELECT DISTINCT drg_definition "
+                    + "FROM medicare "
+                    + "WHERE drg_definition LIKE '%" + substring + "%'");
+            
+            int counter = 1;
+            while (results.next()) {
+                String definition = String.format(results.getString(1));
+                System.out.println(valueOf(counter) + ')' + " " + definition);
+                counter++;
+                
             }
         }
         catch (SQLException e)
