@@ -2,7 +2,7 @@
 AC31007/AC51003 Agile Software Engineering - Group Number 14
 
 Group Members:
-- Oskar Jankowski (Matriculation Number)
+- Oskar Jankowski (170012865)
 - Sarah Hartley (Matriculation Number)
 - Yousaf Nasir (Matriculation Number)
 - Gregor Taylor (160012442)
