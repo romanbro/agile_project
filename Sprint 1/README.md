@@ -32,6 +32,11 @@ Oskar, Gregor, Sarah, Roman, Blazej, Yousaf.
 ### Apologies:
 
 ### Summary of Conversation:
+We explained one by one, what each one of us completed yesterday (Monday). This then followed on to what we planned to achieve before the next meeting and any impediments that may have arose. 
+- Majority of the initial spikes which were allocated by Scrum Master Oskar were near completion or had been completed.
+- Good progress was made by the front-end team in getting an initial webpage designed and working.
+- Creating the database was to be the next primary goal for the backend team.
+- Spikes remained for learning about Google Maps API and Java/SQL utlisation.
 
 ## Day 3 - Scrum Meeting summary
 The Scrum Master for this meeting was Oskar Jankowski.
