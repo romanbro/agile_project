@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="style.css">
+
+    <script src="js/google-map.js"></script>
   </head>
   <body>
     
@@ -109,10 +111,10 @@
                   <button class="blankButton" style='float: right;'>Use GPS instead</button>
                   <form action="#">
                       <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Street Address">
+                        <input id="address1" type="text" class="form-control" placeholder="Dundee University">
                       </div>
                       <div class="form-group">
-                        <input type="text" class="form-control" placeholder="City">
+                        <input id="address2" type="text" class="form-control" placeholder="Dundee Hospital">
                       </div>
                       <div class="form-group">
                         <input type="text" class="form-control" placeholder="Zip Code">
@@ -121,7 +123,7 @@
                         <input type="text" class="form-control" placeholder="State">
                       </div>
                       <div class="form-group">
-                        <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
+                        <input type="submit" value="Search" class="btn btn-primary py-3 px-5" onclick="codeAddress()">
                       </div>
                     </form>
                 </div>
@@ -151,7 +153,8 @@
           <div class="col-md-6" id="map"></div>
         </div>
       </div>
-
+      <div id = "output">
+      </div>
       <div class = "padd">
           <textarea class = "textArea"></textarea>
       </div>
@@ -196,7 +199,8 @@
   <script src="js/bootstrap-datepicker.js"></script>
   <script src="js/jquery.timepicker.min.js"></script>
   <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <!-- The async attribute allows the browser to render the page while the API loads -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCodmwd7VVmMb19CaPLKQOOmm5srQDVhz4&callback=initMap"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
     
