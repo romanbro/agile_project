@@ -948,7 +948,7 @@ h1, h2, h3, h4, h5,
 
 
 .test {
-  padding-top: 70px;
+  padding-top: 80px;
 }
 
 /* Style the tab */
@@ -995,7 +995,7 @@ h1, h2, h3, h4, h5,
 }
 
 .table, th, td{
-  border:1px solid black;
+  border:1px solid #17a2b8;
   white-space:nowrap;
   grid-auto-columns: auto;
   border-collapse: collapse;
