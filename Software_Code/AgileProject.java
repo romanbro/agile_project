@@ -18,19 +18,28 @@ import java.util.LinkedList;
  */
 public class AgileProject {
     public static Connection dbConnection = null;
-    /**
-     * @param args the command line arguments
-     */
+    
+    public static String[] sqlQueries = new String[]{
+        "SELECT * FROM medicare WHERE provider_state = 'FL';",
+        "SELECT drg_definition, provider_id, provider_name, total_discharges, average_total_payments FROM medicare WHERE average_total_payments < 10000;",
+        "SELECT drg_definition, provider_id, provider_name, provider_street_address, provider_city, provider_state, provider_zip_code, average_total_payments FROM medicare ORDER BY average_total_payments ASC LIMIT 50;"
+          
+    };
+    
+    
     public static void main(String[] args) throws Exception {
         Database db = new Database();
         dbConnection = db.getConnection();
         
         if(dbConnection != null) {
             Scanner input = new Scanner(System.in);
+            System.out.println("Saved queries:");
+            System.out.println("1) Display all data from Florida");
+            System.out.println("2) Display some data where the average total payment is under $10000");
+            System.out.println("3) Display 50 cheapest treatments");
             System.out.println("SQL Query: ");
             String search = input.nextLine();
-            
-            
+            search = existingSQLModifier(search);
             
 //            searchBySubstrings(splitSearchIntoKeywords(search));
             printResultsList(resultSetToList(runSQLQuery(search)));
@@ -39,56 +48,61 @@ public class AgileProject {
     }
   
     
+    //sees if the search query is a number and replaces the query with a preexisting one
+    public static String existingSQLModifier(String search){
+        try{
+            Integer index = Integer.valueOf(search) - 1;
+            System.out.println(sqlQueries[index]);
+            return sqlQueries[index];
+        }
+        catch(NumberFormatException e){
+            return search;
+        }
+    }
+    
+    
     //runs a given SQL query on the database
     public static ResultSet runSQLQuery(String query){
-        ResultSet results = null;
+        ResultSet resultSet = null;
         try {
             Statement statement = dbConnection.createStatement();
-            results = statement.executeQuery(query);
+            resultSet = statement.executeQuery(query);
         }
         catch (SQLException e)
         {
             System.out.println("Encountered an error when executing given sql statement");
+            System.exit(1);
         }        
-        return results;
+        return resultSet;
     }
     
     
     //converts the ResultSet object into a linked list filled with String arrays that represent rows
-    public static LinkedList<String[]> resultSetToList(ResultSet results) throws SQLException{
-        ResultSetMetaData resultsMeta = results.getMetaData();
-        int columnNumber = resultsMeta.getColumnCount();
+    public static Data resultSetToList(ResultSet resultSet) throws SQLException{
+        ResultSetMetaData resultsMeta = resultSet.getMetaData();
+        int columnsNumber = resultsMeta.getColumnCount();
         
-        LinkedList<String[]> resultsList = new LinkedList<String[]>();
-        
-        //gets an array of headings and adds it to the linked list
-        String[] headings = new String[columnNumber];
-        for(int i = 0; i < columnNumber; i++){
-            headings[i] = resultsMeta.getColumnName(i + 1);
+        try{
+            Data results = new Data(resultSet, columnsNumber);
+            return results;
         }
-        resultsList.add(headings);
-        
-        //turns each row of the resultset into a string array and then adds it to the linked list
-        while (results.next()) {
-            String[] row = new String[columnNumber];
-            for(int i = 0; i < columnNumber; i++){
-                row[i] = String.format(results.getString(i + 1));              
-            }
-            resultsList.add(row);
+        catch(SQLException e){
+            System.out.println("Encountered an error when executing given sql statement");
         }
         
-        return resultsList;
+        return null;
     }
     
+    
     //prints the results
-    public static void printResultsList(LinkedList<String[]> resultsList){
-        
-        for(String[] array: resultsList){
-            for(String element: array){
-                System.out.printf(element + "\t");
+    public static void printResultsList(Data results){
+        for(int i = 0; i < 50; i++){
+            System.out.printf(results.get(i) + "\t");
+            if((i + 1) % results.getHeadingsNumber() == 0){
+                System.out.printf("\n");
             }
-            System.out.println("");
         }
+        System.out.printf("\n");
     }
     
     
@@ -137,13 +151,13 @@ public class AgileProject {
     }
     
     
+    //splits the search term into words
     public static String[] splitSearchIntoKeywords(String search){
         String[] keywords = search.split(" ");
         
         
         return keywords;
     }
-    
 }
 
 //DATABASE CODE https://docs.microsoft.com/en-us/azure/mysql/connect-java
