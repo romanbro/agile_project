@@ -22,7 +22,8 @@ public class AgileProject {
     public static String[] sqlQueries = new String[]{
         "SELECT * FROM medicare WHERE provider_state = 'FL';",
         "SELECT drg_definition, provider_id, provider_name, total_discharges, average_total_payments FROM medicare WHERE average_total_payments < 10000;",
-        "SELECT 'provider_id', 'provider_name', 'provider_street_address', 'provider_city', 'provider_state', 'provider_zip_code', ''"
+        "SELECT drg_definition, provider_id, provider_name, provider_street_address, provider_city, provider_state, provider_zip_code, average_total_payments FROM medicare ORDER BY average_total_payments ASC LIMIT 50;"
+          
     };
     
     
@@ -32,6 +33,10 @@ public class AgileProject {
         
         if(dbConnection != null) {
             Scanner input = new Scanner(System.in);
+            System.out.println("Saved queries:");
+            System.out.println("1) Display all data from Florida");
+            System.out.println("2) Display some data where the average total payment is under $10000");
+            System.out.println("3) Display 50 cheapest treatments");
             System.out.println("SQL Query: ");
             String search = input.nextLine();
             search = existingSQLModifier(search);
