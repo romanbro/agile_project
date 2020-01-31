@@ -8,7 +8,10 @@ password: a83*3F9)dF[}3-0e..,./rfdD
 
 ## Pair Programming
  - https://youtu.be/uA6VYl04bAI  
- - 
+ - https://youtu.be/joSX1I1P_Gg  
+ 
+ ## SCRUM daily stand-up
+ - https://youtu.be/yFAIKIRqqQE
 
 Group Members:
 - Oskar Jankowski (170012865)
