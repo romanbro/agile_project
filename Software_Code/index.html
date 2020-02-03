@@ -89,12 +89,14 @@
                 <div class="form-group">
                   <input type="address1" class="form-control" name="location" placeholder="Location">
                 </div>
-                <div class="form-group">
-                  <input type="number" class="form-control" name="minPrice" min="2000" max="3000000" placeholder="$ Min Price" oninvalid="this.setCustomValidity('The lowest price for a procedure is $2,000.')">
-                </div>
-                <div class="form-group">
-                  <input type="number" class="form-control" name="maxPrice" min="2000" max="3000000" placeholder="$ Max Price" oninvalid="this.setCustomValidity('The highest cost for a procedure is $3,000,000.')">
-                </div>
+                <div class="slidecontainer">
+                    <input type="range" min="2000" max="3000000" value="2000" class="slider" id="minPrice">
+                    <p>Value: <span id="demo"></span></p>
+                  </div>
+                  <div class="slidecontainer">
+                      <input type="range" min="2000" max="3000000" value="2000" class="slider1" id="maxPrice">
+                      <p>Value: <span id="demo1"></span></p>
+                    </div>
 
                 <div class="row">
                   <div class="column">
@@ -126,12 +128,15 @@
                 <div class="form-group">
                   <input type="address1" class="form-control" name="location" placeholder="Location">
                 </div>
-                <div class="form-group">
-                  <input type="number" class="form-control" name="minPrice" min="2000" max="3000000" placeholder="$ Min Price" oninvalid="this.setCustomValidity('The lowest price for a procedure is $2,000.')">
-                </div>
-                <div class="form-group">
-                  <input type="number" class="form-control" name="maxPrice" min="2000" max="3000000" placeholder="$ Max Price" oninvalid="this.setCustomValidity('The highest cost for a procedure is $3,000,000.')">
-                </div>
+                <div class="slidecontainer">
+                    <input type="range" min="2000" max="3000000" value="2000" class="slider2" id="minPrice1">
+                    <p>Value: <span id="demo2"></span></p>
+                  </div>
+                  <div class="slidecontainer">
+                      <input type="range" min="2000" max="3000000" value="2000" class="slider3" id="maxPrice1">
+                      <p>Value: <span id="demo3"></span></p>
+                    </div>
+                
 
                   <div class="row">
                     <div class="column">
@@ -154,6 +159,26 @@
         </div>
         <div class="row block-9">
           <div class="col-md-6 pr-md-5">
+
+
+              <script>
+                  var slider = document.getElementById("minPrice");
+                  var slider1 = document.getElementById("maxPrice");
+                  var slider2 = document.getElementById("minPrice1");
+                  var slider3 = document.getElementById("maxPrice1");
+                  var output = document.getElementById("demo");
+                  var output1 = document.getElementById("demo1");
+                  var output2 = document.getElementById("demo2");
+                  var output3 = document.getElementById("demo3");
+
+                   output.innerHTML = slider.value;
+                  
+                  slider.oninput = function() {
+                    output.innerHTML = this.value;
+                  }
+                  </script>
+
+
 
               
 
