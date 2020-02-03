@@ -1,6 +1,6 @@
 # Software Code
 
-I upload venv (virtual environment) only to make it easier for the rest of the team that didn't use python before could test it.
+I upload venv (virtual environment) only to make it easier for the rest of the team that didn't use python before to test it.
 to run Flask:
 
 1. cd into venv
