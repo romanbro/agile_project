@@ -9,3 +9,6 @@ https://tomcat.apache.org/download-90.cgi
 
 NetBeans 11.2  
 https://netbeans.apache.org/download/nb112/nb112.html  
+
+# JSP Web App Tutorial  
+https://netbeans.apache.org/kb/docs/web/quickstart-webapps.html
