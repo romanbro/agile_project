@@ -84,25 +84,42 @@
             <form action="#">
 
                 <div class="form-group">
-                  <input type="number" class="form-control" name="procCode" placeholder="111" maxlength="3">
+                  <p>Procedure Code: <span> <input type="number" class="form-control" name="procCode" placeholder="111" maxlength="3"></span></p>
+                  
                 </div>
                 <div class="form-group">
-                  <input type="address1" class="form-control" name="location" placeholder="Location">
+                  <p>Location: <span> <input type="address1" class="form-control" name="location" placeholder="Location"></span></p>
                 </div>
-                <div class="slidecontainer">
-                    <input type="range" min="2000" max="3000000" value="2000" class="slider" id="minPrice">
-                    <p>Value: <span id="demo"></span></p>
+
+                <p>Show results within: <span><select name="distanceFilter" class="dropDown">
+                  <option value="10Miles">10 miles</option>
+                  <option value="50Miles">50 miles</option>
+                  <option value="100Miles">100 miles</option>
+                  <option value="Anywhere">Anywhere</option>
+                </select></span></p>
+
+                <div class="row1">
+                  <div class="column1" style="text-align:center">
+                    <p>Min Price: <span id="demo"></span></p>
                   </div>
-                  <div class="slidecontainer">
-                      <input type="range" min="2000" max="3000000" value="2000" class="slider1" id="maxPrice">
-                      <p>Value: <span id="demo1"></span></p>
+                  <div class="column2" >
+                    <div class="price-slider">
+                      <input type="range" min="2000" max="3000000" value="2000" class="slider" id="minPrice" step = 1000 >
+                        <input type="range" min="2000" max="3000000" value="3000000" class="slider1" id="maxPrice" step = 1000>
                     </div>
+                  </div>
+                  <div class="column1" style="text-align:center">
+                    <p>Max Price: <span id="demo1"></span></p>
+                  </div>
+                </div>
+
 
                 <div class="row">
                   <div class="column">
+                    <p>Order results by:</p>
                     <div class="form-group" >
-                      <p>Order results by :</p>
-                      <input type="radio" name="orderBy" value="closest" checked>  Distance<br>
+                      
+                      <input type="radio" name="orderBy" value="closest" checked>  Distance<br> 
                       <input type="radio" name="orderBy" value="priceLowToHigh" checked>  Price : Low-High<br>
                       <input type="radio" name="orderBy" value="priceHighToLow" checked>  Price : High-Low<br>
                       </div>
@@ -121,13 +138,23 @@
 
           <div id="Description" class="tabcontent">
             <p>Search by description of procedure</p>
+            
             <form action="#">
-                <div class="form-group">
-                  <input type="text" class="form-control" name="prodDesc" placeholder="Chest Pain">
+                <div class="form-group" >
+                  <p>Description: <span> <input type="text" class="form-control" name="prodDesc" placeholder="Chest Pain"></span></p>
                 </div>
+
                 <div class="form-group">
-                  <input type="address1" class="form-control" name="location" placeholder="Location">
+                  <p>Location: <span> <input type="address1" class="form-control" name="location" placeholder="Location"></span></p>
                 </div>
+
+                <p>Show results within: <span><select name="distanceFilter" class="dropDown">
+                  <option value="10Miles">10 miles</option>
+                  <option value="50Miles">50 miles</option>
+                  <option value="100Miles">100 miles</option>
+                  <option value="Anywhere">Anywhere</option>
+                </select></span></p>
+
                 <div class="slidecontainer">
 
                   </div>
@@ -138,8 +165,8 @@
                     </div>
                     <div class="column2" >
                       <div class="price-slider">
-                        <input type="range" min="2000" max="3000000" value="2000" class="slider2" id="minPrice1">
-                          <input type="range" min="2000" max="3000000" value="3000000" class="slider3" id="maxPrice1">
+                        <input type="range" min="2000" max="3000000" value="2000" class="slider2" id="minPrice1" step = 1000>
+                          <input type="range" min="2000" max="3000000" value="3000000" class="slider3" id="maxPrice1" step = 1000>
                       </div>
                     </div>
                     <div class="column1" style="text-align:center">
@@ -208,10 +235,9 @@
 
 
 
-
-
             <div id = "output">
             </div>
+
             <div>
               <table id = "outputTable" align="center" class="test1" style= "text-align:center; display:block; border:1px solid #17a2b8;  height: 400px; overflow-y: scroll; width:100%;">
                 <tr>
@@ -312,9 +338,6 @@
         </div>
       </div>
 
-
-
-
     </section>
 
 		<section class="ftco-section-parallax">
@@ -322,8 +345,8 @@
         <div class="container">
           <div class="row d-flex justify-content-center">
             <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-              <h2>Contact Details</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <!--<h2>Contact Details</h2>-->
+              <p></p>
             </div>
           </div>
         </div>

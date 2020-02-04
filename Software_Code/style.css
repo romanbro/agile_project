@@ -1208,6 +1208,9 @@ input::-moz-range-track {
   clear: both;
 }
 
-.topPadd{
-
+.dropDown{
+  font-family: "Segoe UI Symbol";
+  font-size: 1rem;
+  color: #7782aa;
+  font-style: normal;
 }
