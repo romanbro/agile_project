@@ -921,6 +921,12 @@ h1, h2, h3, h4, h5,
   width: 48%;
 }
 
+.column4 {
+  padding-left: 20px;
+  float: left;
+  width: 50%;
+}
+
 /* Clear floats after the columns */
 .row:after {
   content: "";
@@ -950,6 +956,28 @@ h1, h2, h3, h4, h5,
 .test {
   padding-top: 80px;
 }
+
+
+.tab .tablinks {
+                background-color: blue
+                border: 1px solid black;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+                float: left;
+              }
+
+.tab .tablinks:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+.tab .tablinks:hover {
+  background-color: rgb(0, 162, 255);
+  }
 
 /* Style the tab */
 .tab {
@@ -1213,4 +1241,30 @@ input::-moz-range-track {
   font-size: 1rem;
   color: #7782aa;
   font-style: normal;
+}
+
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 300px;
+  background-color: #7782aa;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  top: -5px;
+  left: 105%;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
