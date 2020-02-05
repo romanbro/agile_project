@@ -10,6 +10,29 @@
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+              .tab .tablinks {
+                background-color: blue;
+                border: 1px solid black;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+                float: left;
+              }
+              
+              .tab .tablinks:not(:last-child) {
+                border-right: none; /* Prevent double borders */
+              }
+              
+              .tab .tablinks:hover {
+                background-color: rgb(0, 162, 255);
+              }
+              </style>
 
   </head>
   <body>
@@ -48,28 +71,7 @@
               </div>
             </div>
 
-            <style>
-              .tab .tablinks {
-                background-color: blue
-                border: 1px solid black;
-                color: white;
-                padding: 15px 32px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                cursor: pointer;
-                float: left;
-              }
-              
-              .tab .tablinks:not(:last-child) {
-                border-right: none; /* Prevent double borders */
-              }
-              
-              .tab .tablinks:hover {
-                background-color: rgb(0, 162, 255);
-              }
-              </style>
+            
       
       <div style="padding-bottom:20px;">
           <div class = "tab">
@@ -87,7 +89,7 @@
                   <input type="number" class="form-control" name="procCode" placeholder="111" maxlength="3">
                 </div>
                 <div class="form-group">
-                  <input type="address1" class="form-control" name="location" placeholder="Location">
+                  <input type="text" class="form-control" name="location" placeholder="Location">
                 </div>
                 <div class="form-group">
                   <input type="number" class="form-control" name="minPrice" min="2000" max="3000000" placeholder="$ Min Price" oninvalid="this.setCustomValidity('The lowest price for a procedure is $2,000.')">
@@ -124,7 +126,7 @@
                   <input type="text" class="form-control" name="prodDesc" placeholder="Chest Pain">
                 </div>
                 <div class="form-group">
-                  <input type="address1" class="form-control" name="location" placeholder="Location">
+                  <input type="text" class="form-control" name="location" placeholder="Location">
                 </div>
                 <div class="form-group">
                   <input type="number" class="form-control" name="minPrice" min="2000" max="3000000" placeholder="$ Min Price" oninvalid="this.setCustomValidity('The lowest price for a procedure is $2,000.')">
