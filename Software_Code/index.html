@@ -4,7 +4,7 @@
     <title>Remedic - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
 
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
@@ -13,7 +13,7 @@
 
   </head>
   <body>
-    
+
 
   <!-- START nav -->
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -22,8 +22,8 @@
     </div>
   </nav>
     <!-- END nav -->
-    
-    
+
+
     <div class="hero-wrap" style="background-image: url('surgery1.jpg'); background-attachment:fixed;">
       <div class="overlay"></div>
         <div class="row no-gutters slider-text justify-content-center" >
@@ -34,7 +34,7 @@
           </div>
         </div>
     </div>
-  
+
 
    <section class="ftco-section contact-section ftco-degree-bg">
       <div class="container">
@@ -61,46 +61,65 @@
                 cursor: pointer;
                 float: left;
               }
-              
+
               .tab .tablinks:not(:last-child) {
                 border-right: none; /* Prevent double borders */
               }
-              
+
               .tab .tablinks:hover {
                 background-color: rgb(0, 162, 255);
               }
               </style>
-      
+
       <div style="padding-bottom:20px;">
           <div class = "tab">
             <button class="tablinks" onclick = "openSearch(event, 'Code')" id="defaultOpen">Procedure code</button>
             <button class="tablinks" onclick = "openSearch(event, 'Description')">Procedure description</button>
-            
+
           </div>
 
           <div id="Code" class="tabcontent">
             <p>Search by code of procedure
             </p>
             <form action="#">
-                
+
                 <div class="form-group">
-                  <input type="number" class="form-control" name="procCode" placeholder="111" maxlength="3">
+                  <p>Procedure Code: <span> <input type="number" class="form-control" name="procCode" placeholder="111" maxlength="3"></span></p>
+                  
                 </div>
                 <div class="form-group">
-                  <input type="address1" class="form-control" name="location" placeholder="Location">
+                  <p>Location: <span> <input type="address1" class="form-control" name="location" placeholder="Location"></span></p>
                 </div>
-                <div class="form-group">
-                  <input type="number" class="form-control" name="minPrice" min="2000" max="3000000" placeholder="$ Min Price" oninvalid="this.setCustomValidity('The lowest price for a procedure is $2,000.')">
+
+                <p>Show results within: <span><select name="distanceFilter" class="dropDown">
+                  <option value="10Miles">10 miles</option>
+                  <option value="50Miles">50 miles</option>
+                  <option value="100Miles">100 miles</option>
+                  <option value="Anywhere">Anywhere</option>
+                </select></span></p>
+
+                <div class="row1">
+                  <div class="column1" style="text-align:center">
+                    <p>Min Price: <span id="demo"></span></p>
+                  </div>
+                  <div class="column2" >
+                    <div class="price-slider">
+                      <input type="range" min="2000" max="3000000" value="2000" class="slider" id="minPrice" step = 1000 >
+                        <input type="range" min="2000" max="3000000" value="3000000" class="slider1" id="maxPrice" step = 1000>
+                    </div>
+                  </div>
+                  <div class="column1" style="text-align:center">
+                    <p>Max Price: <span id="demo1"></span></p>
+                  </div>
                 </div>
-                <div class="form-group">
-                  <input type="number" class="form-control" name="maxPrice" min="2000" max="3000000" placeholder="$ Max Price" oninvalid="this.setCustomValidity('The highest cost for a procedure is $3,000,000.')">
-                </div>
+
 
                 <div class="row">
                   <div class="column">
+                    <p>Order results by:</p>
                     <div class="form-group" >
-                      <p>Order results by :</p>
-                      <input type="radio" name="orderBy" value="closest" checked>  Distance<br>  
+                      
+                      <input type="radio" name="orderBy" value="closest" checked>  Distance<br> 
                       <input type="radio" name="orderBy" value="priceLowToHigh" checked>  Price : Low-High<br>
                       <input type="radio" name="orderBy" value="priceHighToLow" checked>  Price : High-Low<br>
                       </div>
@@ -112,32 +131,55 @@
                     </div>
                   </div>
                 </div>
-                
-                
+
+
               </form>
           </div>
 
           <div id="Description" class="tabcontent">
             <p>Search by description of procedure</p>
+            
             <form action="#">
-                <div class="form-group">
-                  <input type="text" class="form-control" name="prodDesc" placeholder="Chest Pain">
+                <div class="form-group" >
+                  <p>Description: <span> <input type="text" class="form-control" name="prodDesc" placeholder="Chest Pain"></span></p>
                 </div>
+
                 <div class="form-group">
-                  <input type="address1" class="form-control" name="location" placeholder="Location">
+                  <p>Location: <span> <input type="address1" class="form-control" name="location" placeholder="Location"></span></p>
                 </div>
-                <div class="form-group">
-                  <input type="number" class="form-control" name="minPrice" min="2000" max="3000000" placeholder="$ Min Price" oninvalid="this.setCustomValidity('The lowest price for a procedure is $2,000.')">
-                </div>
-                <div class="form-group">
-                  <input type="number" class="form-control" name="maxPrice" min="2000" max="3000000" placeholder="$ Max Price" oninvalid="this.setCustomValidity('The highest cost for a procedure is $3,000,000.')">
-                </div>
+
+                <p>Show results within: <span><select name="distanceFilter" class="dropDown">
+                  <option value="10Miles">10 miles</option>
+                  <option value="50Miles">50 miles</option>
+                  <option value="100Miles">100 miles</option>
+                  <option value="Anywhere">Anywhere</option>
+                </select></span></p>
+
+                <div class="slidecontainer">
+
+                  </div>
+
+                  <div class="row1">
+                    <div class="column1" style="text-align:center">
+                      <p>Min Price: <span id="demo2"></span></p>
+                    </div>
+                    <div class="column2" >
+                      <div class="price-slider">
+                        <input type="range" min="2000" max="3000000" value="2000" class="slider2" id="minPrice1" step = 1000>
+                          <input type="range" min="2000" max="3000000" value="3000000" class="slider3" id="maxPrice1" step = 1000>
+                      </div>
+                    </div>
+                    <div class="column1" style="text-align:center">
+                      <p>Max Price: <span id="demo3"></span></p>
+                    </div>
+                  </div>
+
 
                   <div class="row">
                     <div class="column">
                       <div class="form-group" >
                         <p>Order results by :</p>
-                        <input type="radio" name="orderBy" value="closest" checked>  Distance<br>  
+                        <input type="radio" name="orderBy" value="closest" checked>  Distance<br>
                         <input type="radio" name="orderBy" value="priceLowToHigh" checked>  Price : Low-High<br>
                         <input type="radio" name="orderBy" value="priceHighToLow" checked>  Price : High-Low<br>
                         </div>
@@ -155,10 +197,47 @@
         <div class="row block-9">
           <div class="col-md-6 pr-md-5">
 
-              
+
+              <script>
+                  var slider = document.getElementById("minPrice");
+                  var output = document.getElementById("demo");
+
+                  output.innerHTML = slider.Value;
+                  slider.oninput = function() {
+                    output.innerHTML = this.value;
+                  }
+
+                  var slider1 = document.getElementById("maxPrice");
+                  var output1 = document.getElementById("demo1");
+
+                  output1.innerHTML = slider1.value;
+                  slider1.oninput = function() {
+                    output1.innerHTML = this.value;
+                  }
+
+                  var output2 = document.getElementById("demo2");
+                  var slider2 = document.getElementById("minPrice1");
+
+                  output2.innerHTML = slider2.value;
+                  slider2.oninput = function() {
+                    output2.innerHTML = this.value;
+                  }
+
+                  var slider3 = document.getElementById("maxPrice1");
+                  var output3 = document.getElementById("demo3");
+
+                  output3.innerHTML = slider3.value;
+                  slider3.oninput = function() {
+                    output3.innerHTML = this.value;
+                  }
+
+                  </script>
+
+
 
             <div id = "output">
             </div>
+
             <div>
               <table id = "outputTable" align="center" class="test1" style= "text-align:center; display:block; border:1px solid #17a2b8;  height: 400px; overflow-y: scroll; width:100%;">
                 <tr>
@@ -166,7 +245,7 @@
                   <th>Hospital</th>
                   <th>Address</th>
                   <th>Price</th>
-                  <th>Distance</th>    
+                  <th>Distance</th>
                 </tr>
                 <tr>
                   <td style="width:30%"><input type="text" style="border:none; width:100%" name="ProcedureName"></td>
@@ -174,84 +253,84 @@
                   <td style="width:30%"><input type="text" style="border:none; width:100%" name="Address"></td>
                   <td style="width:10%"><input type="text" style="border:none; width:100%" name="Price"></td>
                   <td style="width:10%"><input type="text" style="border:none; width:100%" name="Distance"></td>
-                </tr> 
+                </tr>
                 <tr>
                   <td style="width:30%"><input type="text" style="border:none; width:100%" name="ProcedureName"></td>
                   <td style="width:20%"><input type="text" style="border:none; width:100%" name="Hospital"></td>
                   <td style="width:30%"><input type="text" style="border:none; width:100%" name="Address"></td>
                   <td style="width:10%"><input type="text" style="border:none; width:100%" name="Price"></td>
                   <td style="width:10%"><input type="text" style="border:none; width:100%" name="Distance"></td>
-                </tr> 
+                </tr>
                 <tr>
                   <td style="width:30%"><input type="text" style="border:none; width:100%" name="ProcedureName"></td>
                   <td style="width:20%"><input type="text" style="border:none; width:100%" name="Hospital"></td>
                   <td style="width:30%"><input type="text" style="border:none; width:100%" name="Address"></td>
                   <td style="width:10%"><input type="text" style="border:none; width:100%" name="Price"></td>
                   <td style="width:10%"><input type="text" style="border:none; width:100%" name="Distance"></td>
-                </tr> 
+                </tr>
                 <tr>
                   <td style="width:30%"><input type="text" style="border:none; width:100%" name="ProcedureName"></td>
                   <td style="width:20%"><input type="text" style="border:none; width:100%" name="Hospital"></td>
                   <td style="width:30%"><input type="text" style="border:none; width:100%" name="Address"></td>
                   <td style="width:10%"><input type="text" style="border:none; width:100%" name="Price"></td>
                   <td style="width:10%"><input type="text" style="border:none; width:100%" name="Distance"></td>
-                </tr> 
+                </tr>
                 <tr>
                   <td style="width:30%"><input type="text" style="border:none; width:100%" name="ProcedureName"></td>
                   <td style="width:20%"><input type="text" style="border:none; width:100%" name="Hospital"></td>
                   <td style="width:30%"><input type="text" style="border:none; width:100%" name="Address"></td>
                   <td style="width:10%"><input type="text" style="border:none; width:100%" name="Price"></td>
                   <td style="width:10%"><input type="text" style="border:none; width:100%" name="Distance"></td>
-                </tr> 
+                </tr>
                 <tr>
                   <td style="width:30%"><input type="text" style="border:none; width:100%" name="ProcedureName"></td>
                   <td style="width:20%"><input type="text" style="border:none; width:100%" name="Hospital"></td>
                   <td style="width:30%"><input type="text" style="border:none; width:100%" name="Address"></td>
                   <td style="width:10%"><input type="text" style="border:none; width:100%" name="Price"></td>
                   <td style="width:10%"><input type="text" style="border:none; width:100%" name="Distance"></td>
-                </tr> 
+                </tr>
                 <tr>
                   <td style="width:30%"><input type="text" style="border:none; width:100%" name="ProcedureName"></td>
                   <td style="width:20%"><input type="text" style="border:none; width:100%" name="Hospital"></td>
                   <td style="width:30%"><input type="text" style="border:none; width:100%" name="Address"></td>
                   <td style="width:10%"><input type="text" style="border:none; width:100%" name="Price"></td>
                   <td style="width:10%"><input type="text" style="border:none; width:100%" name="Distance"></td>
-                </tr> 
+                </tr>
                 <tr>
                   <td style="width:30%"><input type="text" style="border:none; width:100%" name="ProcedureName"></td>
                   <td style="width:20%"><input type="text" style="border:none; width:100%" name="Hospital"></td>
                   <td style="width:30%"><input type="text" style="border:none; width:100%" name="Address"></td>
                   <td style="width:10%"><input type="text" style="border:none; width:100%" name="Price"></td>
                   <td style="width:10%"><input type="text" style="border:none; width:100%" name="Distance"></td>
-                </tr> 
+                </tr>
                 <tr>
                   <td style="width:30%"><input type="text" style="border:none; width:100%" name="ProcedureName"></td>
                   <td style="width:20%"><input type="text" style="border:none; width:100%" name="Hospital"></td>
                   <td style="width:30%"><input type="text" style="border:none; width:100%" name="Address"></td>
                   <td style="width:10%"><input type="text" style="border:none; width:100%" name="Price"></td>
                   <td style="width:10%"><input type="text" style="border:none; width:100%" name="Distance"></td>
-                </tr> 
+                </tr>
                 <tr>
                   <td style="width:30%"><input type="text" style="border:none; width:100%" name="ProcedureName"></td>
                   <td style="width:20%"><input type="text" style="border:none; width:100%" name="Hospital"></td>
                   <td style="width:30%"><input type="text" style="border:none; width:100%" name="Address"></td>
                   <td style="width:10%"><input type="text" style="border:none; width:100%" name="Price"></td>
                   <td style="width:10%"><input type="text" style="border:none; width:100%" name="Distance"></td>
-                </tr> 
+                </tr>
                 <tr>
                   <td style="width:30%"><input type="text" style="border:none; width:100%" name="ProcedureName"></td>
                   <td style="width:20%"><input type="text" style="border:none; width:100%" name="Hospital"></td>
                   <td style="width:30%"><input type="text" style="border:none; width:100%" name="Address"></td>
                   <td style="width:10%"><input type="text" style="border:none; width:100%" name="Price"></td>
                   <td style="width:10%"><input type="text" style="border:none; width:100%" name="Distance"></td>
-                </tr> 
+                </tr>
                 <tr>
                   <td style="width:30%"><input type="text" style="border:none; width:100%" name="ProcedureName"></td>
                   <td style="width:20%"><input type="text" style="border:none; width:100%" name="Hospital"></td>
                   <td style="width:30%"><input type="text" style="border:none; width:100%" name="Address"></td>
                   <td style="width:10%"><input type="text" style="border:none; width:100%" name="Price"></td>
                   <td style="width:10%"><input type="text" style="border:none; width:100%" name="Distance"></td>
-                </tr> 
+                </tr>
               </table>
             </div>
           </div>
@@ -259,18 +338,15 @@
         </div>
       </div>
 
-      
-
-
     </section>
-		
+
 		<section class="ftco-section-parallax">
       <div class="parallax-img d-flex align-items-center">
         <div class="container">
           <div class="row d-flex justify-content-center">
             <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-              <h2>Contact Details</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <!--<h2>Contact Details</h2>-->
+              <p></p>
             </div>
           </div>
         </div>
@@ -286,8 +362,8 @@
         </div>
       </div>
     </footer>
-    
-  
+
+
 
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -307,6 +383,6 @@
   <!-- The async attribute allows the browser to render the page while the API loads -->
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCodmwd7VVmMb19CaPLKQOOmm5srQDVhz4&callback=initMap"></script>
   <script src="js/main.js"></script>
-    
+
   </body>
 </html>
