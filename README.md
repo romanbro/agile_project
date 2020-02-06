@@ -6,6 +6,11 @@ The link to our live website: oskarjankowski.com
 username: dev  
 password: a83*3F9)dF[}3-0e..,./rfdD  
 
+## Database login details
+Server IP: team14agileprojectserver.mysql.database.azure.com
+Username: romanb@team14agileprojectserver
+Password: adminpassword1!
+
 ## Pair Programming
  - https://youtu.be/uA6VYl04bAI  
  - https://youtu.be/joSX1I1P_Gg  
