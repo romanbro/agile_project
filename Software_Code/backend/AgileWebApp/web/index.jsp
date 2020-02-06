@@ -157,8 +157,6 @@
         <div class="row block-9">
           <div class="col-md-6 pr-md-5">
 
-              
-
             <div id = "output">
             </div>
             <div>
