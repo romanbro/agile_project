@@ -959,8 +959,6 @@ h1, h2, h3, h4, h5,
 
 
 .tab .tablinks {
-                background-color: blue;
-                border: 1px solid black;
                 color: white;
                 padding: 15px 32px;
                 text-align: center;
