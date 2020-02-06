@@ -57,18 +57,18 @@
         <!--START User Input Code Form-->
         <div id="Code" class="tabcontent">
           <p>Search by code of procedure</p>
-          <form action="#"> 
+          <form action="#">
 
-            
+
 
             <div class="form-group">
-              <div class="tooltip">Procedure Code: 
+              <div class="tooltip">Procedure Code:
                 <span class="tooltiptext">Enter a 3 digit number</span>
               </div>
               <span> <input type="number" class="form-control" name="procCode" placeholder="111" maxlength="3"></span>
             </div>
             <div class="form-group">
-              <div class="tooltip">Location: 
+              <div class="tooltip">Location:
                 <span class="tooltiptext">Enter a state, address or zip code</span>
               </div>
               <span> <input type="address1" class="form-control" name="location" placeholder="Location"></span>
@@ -103,7 +103,7 @@
               <div class="column">
                 <p>Order results by:</p>
                 <div class="form-group" >
-                  <input type="radio" name="orderBy" value="closest" checked>  Distance<br> 
+                  <input type="radio" name="orderBy" value="closest" checked>  Distance<br>
                   <input type="radio" name="orderBy" value="priceLowToHigh" checked>  Price : Low-High<br>
                   <input type="radio" name="orderBy" value="priceHighToLow" checked>  Price : High-Low<br>
                 </div>
@@ -125,14 +125,14 @@
           <p>Search by description of procedure</p>
           <form action="#">
             <div class="form-group" >
-              <div class="tooltip">Description: 
+              <div class="tooltip">Description:
                 <span class="tooltiptext">Enter a description of your procedure</span>
               </div>
               <span> <input type="text" class="form-control" name="prodDesc" placeholder="Chest Pain"></span>
             </div>
 
             <div class="form-group">
-              <div class="tooltip">Location: 
+              <div class="tooltip">Location:
                 <span class="tooltiptext">Enter a state, address or zip code</span>
               </div>
               <span> <input type="address1" class="form-control" name="location" placeholder="Location"></span>
@@ -147,7 +147,7 @@
               <option value="Anywhere">Anywhere</option>
             </select></span></p>
 
-           
+
             <div class="row1">
               <div class="column1" style="text-align:center">
                 <p>Min Price: <span id="demo2"></span></p>
@@ -189,7 +189,7 @@
       <!--START Output-->
       <div class="row">
         <div class="column" style="text-align: center">
-          <div id = "output"> 
+          <div id = "output">
             <p >Table goes here</p>
             <!--######################CODE FOR TABLE GOES HERE########################-->
           </div>
@@ -341,7 +341,7 @@
                   icon: icon
                 });
                 markersArray.push(marker)
-                // include a infowindow on the marker with address 
+                // include a infowindow on the marker with address
                 if (asDestination = true) {
                   var infowindow = new google.maps.InfoWindow({
                     content: address
