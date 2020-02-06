@@ -107,7 +107,7 @@
                   <div class="column">
                     <div class="form-group" style="float:right">
                       <p class="extraPadd"></p>
-                      <button onclick="location.href='http://google.com'" type="button" class="btn btn-primary py-3 px-5">Search</button>
+                      <button onclick="codeAddress()" type="button" class="btn btn-primary py-3 px-5">Search</button>
 {#                        value="Search" class="btn btn-primary py-3 px-5"#}
                     </div>
                   </div>
@@ -268,45 +268,130 @@
       <div class="parallax-img d-flex align-items-center">
         <div class="container">
           <div class="row d-flex justify-content-center">
+                      <div id="outputdiv"></div>
+                       <script> var map, destinationIcon, originIcon, bounds, geocoder, pos, markersArray, infoWindow
+var database = JSON.parse('{{ data | safe }}');
+var addresses = []
+for(x in database){
+    addresses.push(database[x].provider_street_address);
+}
+console.log(addresses)
+
+function initMap() {
+    bounds = new google.maps.LatLngBounds;
+    markersArray = [];
+    pos = {
+                lat: 39.8333333,
+                lng: -98.585522
+            };
+    destinationIcon = 'https://chart.googleapis.com/chart?' +
+        'chst=d_map_pin_letter&chld=D|FF0000|000000';
+    originIcon = 'https://chart.googleapis.com/chart?' +
+        'chst=d_map_pin_letter&chld=O|FFFF00|000000';
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: pos,
+        zoom: 7
+    });
+
+    geocoder = new google.maps.Geocoder;
+    // Try HTML5 geolocation.
+    infoWindow = new google.maps.InfoWindow;
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Your location found.');
+            infoWindow.open(map);
+            map.setCenter(pos);
+        }, function () {
+            handleLocationError(true, infoWindow, map.getCenter());
+        });
+    } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+    }
+}
+
+function codeAddress() {
+    var service = new google.maps.DistanceMatrixService;
+    service.getDistanceMatrix({
+        origins: [pos],
+        destinations: addresses,
+        travelMode: 'DRIVING',
+        unitSystem: google.maps.UnitSystem.METRIC,
+        avoidHighways: false,
+        avoidTolls: false
+    }, function (response, status) {
+        if (status !== 'OK') {
+            alert('Error was: ' + status);
+        } else {
+            var originList = response.originAddresses;
+            var destinationList = response.destinationAddresses;
+            var outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = '';
+            deleteMarkers(markersArray);
+
+            var showGeocodedAddressOnMap = function (asDestination, address) {
+                var icon = asDestination ? destinationIcon : originIcon;
+                return function (results, status) {
+                    if (status === 'OK') {
+                        map.fitBounds(bounds.extend(results[0].geometry.location));
+                        
+                        var marker = new google.maps.Marker({
+                            map: map,
+                            position: results[0].geometry.location,
+                            icon: icon
+                        });
+                        markersArray.push(marker)
+                        // include a infowindow on the marker with address 
+                        if(asDestination = true){
+                            var infowindow = new google.maps.InfoWindow({
+                                    content: address
+                            });
+                        } else {
+                            var infowindow = new google.maps.InfoWindow({
+                                content: address
+                        });
+                        }
+                        marker.addListener('click', function () {
+                            infowindow.open(map, marker);
+                        });
+                    } else {
+                        alert('Geocode was not successful due to: ' + status);
+                    }
+                };
+            };
+
+            for (var i = 0; i < originList.length; i++) {
+                var results = response.rows[i].elements;
+                geocoder.geocode({ 'address': originList[i] },
+                    showGeocodedAddressOnMap(false, originList[i]));
+                for (var j = 0; j < results.length; j++) {
+                    geocoder.geocode({ 'address': destinationList[j] },
+                        showGeocodedAddressOnMap(true, destinationList[j]));
+                    outputDiv.innerHTML += originList[i] + ' to ' + destinationList[j] +
+                        ': ' + results[j].distance.text + ' in ' +
+                        results[j].duration.text + '<br>';
+                }
+            }
+        }
+    });
+}
+
+function deleteMarkers(markersArray) {
+    for (var i = 0; i < markersArray.length; i++) {
+        markersArray[i].setMap(null);
+    }
+    markersArray = [];
+}
+</script>
+                      </div>
             <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
               <h2>Contact Details</h2>
-                <p>{{ data }}</p>
-{#                <p>    {% if result %}#}
-{##}
-{#    {% for row in data %}#}
-{##}
-{#    {% endfor %}#}
-{#    {% endif %}#}
-{#<table id="employees" style="width:100%"><tbody><tr>#}
-{#        <th>First Name</th>#}
-{#        <th>Last Name</th>#}
-{#        <th>Gender</th>#}
-{#    <th>Gender</th>#}
-{#    <th>Gender</th>#}
-{#    <th>Gender</th>#}
-{#    <th>Gender</th>#}
-{#    <th>Gender</th>#}
-{#    <th>Gender</th>#}
-{#    <th>Gender</th>#}
-{#    <th>Gender</th>#}
-{#    <th>Gender</th>#}
-{#    <th>Gender</th>#}
-{##}
-{#    </tr><tr>#}
-{#        <td> {{ row.id }}</td>#}
-{#        <td> {{ row.drg_definition }}</td>#}
-{#        <td> {{ row.provider_id }}</td>#}
-{#        <td> {{ row.provider_name }}</td>#}
-{#        <td> {{ row.provider_street_address }}</td>#}
-{#        <td> {{ row.provider_city }}</td>#}
-{#    <td> {{ row.provider_state }}</td>#}
-{#    <td> {{ row.provider_zip_code }}</td>#}
-{#    <td> {{ row.hospital_referral_region_description }}</td>#}
-{#    <td> {{ row.total_discharges }}</td>#}
-{#    <td> {{ row.average_covered_charges }}</td>#}
-{#    <td> {{ row.average_total_payments }}</td>#}
-{#    <td> {{ row.average_medicare_payments }}</td>#}
-{#    </tr></tbody></table></p>#}
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
           </div>
@@ -317,7 +402,7 @@
           <div class="col-md-12 text-center">
 
             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+              Copyright &copy;<script>document.write(new Date().getFullYear());</script></script>> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
           </div>
         </div>
@@ -341,7 +426,6 @@
   <script src="{{url_for('static', filename='js/scrollax.min.js')}}"></script>
   <!-- The async attribute allows the browser to render the page while the API loads -->
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCodmwd7VVmMb19CaPLKQOOmm5srQDVhz4&callback=initMap"></script>
-  <script src="{{url_for('static', filename='js/google-map.js')}}"></script>
   <script src="{{url_for('static', filename='js/main.js')}}"></script>
     
   </body>

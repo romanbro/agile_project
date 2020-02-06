@@ -1,6 +1,5 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify, json
 from flaskext.mysql import MySQL
-# from flask_mysqldb import MySQL
 
 app = Flask(__name__)
 
@@ -12,23 +11,19 @@ app.config['MYSQL_DATABASE_HOST'] = 'team14agileprojectserver.mysql.database.azu
 mysql = MySQL()
 mysql.init_app(app)
 
-@app.route('/data', methods=['GET', 'POST'])
+
+@app.route('/', methods=['GET', 'POST'])
 def hello_world():
     data = "x"
-    # if request.method == "GET":
-        # details = request.form
-        # location = details['location']
-        # procCode = details['procCode']
-    # cur = mysql.connection.cursor()
-    # cursor = mysql.get_db().cursor()
     conn = mysql.connect()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM medicare WHERE provider_state = 'FL';")
+    cursor.execute("SELECT * FROM medicare WHERE provider_state = 'FL' LIMIT 2;")
     row = cursor.fetchone()
     data = cursor.fetchall()
-    # mysql.connection.commit()
+    items = [dict(zip([key[0] for key in cursor.description], row)) for row in data]
+    json_data = json.dumps(items)
     cursor.close()
-    return render_template('index.html', data=data, content_type='application/json')
+    return render_template('index.html', data=json_data)
 
 
 if __name__ == '__main__':
