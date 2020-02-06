@@ -66,3 +66,25 @@ Each person explained what they had been working on yesterday since the last mee
 - Netbeans and JSP enviroment installed on back-end teams laptops - ran into some issues so took longer than expected
 - Front-end team finished webpage - added information pop-ups, tab icon and fixed page layout.
 - Back-end team working on integration and jsp.
+
+
+--
+## Day 4 - Scrum Meeting summary
+The Scrum Master for this meeting was Sarah Hartley.
+
+### Members Present:
+Oskar, Gregor, Sarah, Yousaf, Blazej, Roman.
+
+### Members Not Present:
+N/A
+
+### Apologies:
+N/A
+
+### Summary of Conversation:
+
+Each person explained what they had been working on yesterday since the last meeting, what they were going to work on today and any problems that they ran into.
+
+- Setting up environment and working on integration.
+- Front-end team made last minute changes to the tab displays 
+- Going forward, working on implementation of user stories.
