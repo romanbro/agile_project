@@ -14,35 +14,15 @@ mysql.init_app(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def hello_world():
-    data = "x"
     conn = mysql.connect()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM medicare WHERE provider_state = 'FL' LIMIT 3;")
-    row = cursor.fetchone()
+    cursor.execute("SELECT * FROM medicare WHERE provider_state = 'FL' LIMIT 5;")
+    # row = cursor.fetchone()
     data = cursor.fetchall()
     items = [dict(zip([key[0] for key in cursor.description], row)) for row in data]
     json_data = json.dumps(items)
     cursor.close()
     return render_template('index.html', data=json_data)
-
-
-
-# @app.route('/', methods=['GET', 'POST'])
-# def index():
-#     return render_template('index.html')
-#
-
-# @app.route('/codesearch', methods=['GET', 'POST'])
-# def codesearch():
-#     procCode = request.args.get('procCode')
-#     searchCode = procCode + " - %"
-#
-#     conn = mysql.connect()
-#     cursor = conn.cursor()
-#     cursor.execute("SELECT * FROM medicare WHERE drg_definition LIKE '" + searchCode +"';")
-#     data = cursor.fetchall()
-#     cursor.close()
-#     return render_template('responseee.html', data=data)
 
 
 if __name__ == '__main__':
