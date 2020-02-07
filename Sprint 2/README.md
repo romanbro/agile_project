@@ -88,3 +88,25 @@ Each person explained what they had been working on yesterday since the last mee
 - Setting up environment and working on integration.
 - Front-end team made last minute changes to the tab displays 
 - Going forward, working on implementation of user stories.
+
+
+--
+## Day 5 - Scrum Meeting summary
+The Scrum Master for this meeting was Sarah Hartley.
+
+### Members Present:
+Oskar, Gregor, Sarah, Yousaf, Blazej, Roman.
+
+### Members Not Present:
+N/A
+
+### Apologies:
+N/A
+
+### Summary of Conversation:
+
+Each person explained what they had been working on yesterday since the last meeting, what they were going to work on today and any problems that they ran into.
+
+- Back-end team switched from JSP to Python after issues with integration with database.
+- Front-end team changed the layout of the page - map now below the table, because it wouldn't be able to display the full search results. Also removed order by buttons.
+- Going forward, Backend team are working on implementing the user stories
