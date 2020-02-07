@@ -111,7 +111,7 @@
               <div class="column">
                 <div class="form-group" style="float:right">
                   <p class="extraPadd"></p>
-                  <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
+                  <input onclick="codeAddress()" type="submit" value="Search" class="btn btn-primary py-3 px-5">
                 </div>
               </div>
             </div>
@@ -367,6 +367,9 @@
             for (var j = 0; j < results.length; j++) {
               geocoder.geocode({ 'address': destinationList[j] },
                 showGeocodedAddressOnMap(true, destinationList[j]));
+                database[j].distance = results[j].distance.text;
+                console.log(results[j].distance.text)
+                console.log(distance[j].distance)
               outputDiv.innerHTML += originList[i] + ' to ' + destinationList[j] +
                 ': ' + results[j].distance.text + ' in ' +
                 results[j].duration.text + '<br>';
