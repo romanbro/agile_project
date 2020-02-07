@@ -5,10 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
-       <link rel="stylesheet" href="{{url_for('static', filename='css/open-iconic-bootstrap.min.css')}}">
-        <link rel="stylesheet" href="{{url_for('static', filename='css/animate.css')}}">
-        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
-      <link rel="icon" href="{{url_for('static', filename='heart.jpg')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/open-iconic-bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/animate.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="icon" href="{{url_for('static', filename='heart.jpg')}}">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+ 
   </head>
   <body>
 
@@ -23,7 +28,7 @@
 
 
   <!--START Blue Header Strip-->
-    <div class="hero-wrap" style="background-image: url('{{url_for('static', filename='surgery1.jpg')}}'); background-attachment:fixed;">
+    <div class="hero-wrap" style="background-image: url('surgery1.jpg'); background-attachment:fixed;">
       <div class="overlay"></div>
         <div class="row no-gutters slider-text justify-content-center" >
           <div class="col-md-8 ftco-animate text-center">
@@ -57,18 +62,18 @@
         <!--START User Input Code Form-->
         <div id="Code" class="tabcontent">
           <p>Search by code of procedure</p>
-          <form action="#">
+          <form action="#"> 
 
-
+            
 
             <div class="form-group">
-              <div class="tooltip">Procedure Code:
+              <div class="tooltip">Procedure Code: 
                 <span class="tooltiptext">Enter a 3 digit number</span>
               </div>
               <span> <input type="number" class="form-control" name="procCode" placeholder="111" maxlength="3"></span>
             </div>
             <div class="form-group">
-              <div class="tooltip">Location:
+              <div class="tooltip">Location: 
                 <span class="tooltiptext">Enter a state, address or zip code</span>
               </div>
               <span> <input type="address1" class="form-control" name="location" placeholder="Location"></span>
@@ -85,32 +90,22 @@
 
             <div class="row1">
               <div class="column1" style="text-align:center">
-                <p>Min Price: <span id="demo"></span></p>
+                <p>Min Price: $<span id="demo"></span></p>
               </div>
               <div class="column2" >
                 <div class="price-slider">
-                  <input type="range" min="2000" max="3000000" value="2000" name="minPrice" class="slider" id="minPrice" step = 1000 >
-                  <input type="range" min="2000" max="3000000" value="3000000" name="maxPrice" class="slider1" id="maxPrice" step = 1000>
+                  <input type="range" min="2000" max="3000000" value="2000" name="minPrice" class="slider" id="minPrice" step = 500 >
+                  <input type="range" min="2000" max="3000000" value="3000000" name="maxPrice" class="slider1" id="maxPrice" step = 500>
                 </div>
               </div>
               <div class="column1" style="text-align:center">
-                <p>Max Price: <span id="demo1"></span></p>
+                <p>Max Price: $<span id="demo1"></span></p>
               </div>
             </div>
 
-
             <div class="row">
               <div class="column">
-                <p>Order results by:</p>
-                <div class="form-group" >
-                  <input type="radio" name="orderBy" value="closest" checked>  Distance<br>
-                  <input type="radio" name="orderBy" value="priceLowToHigh" checked>  Price : Low-High<br>
-                  <input type="radio" name="orderBy" value="priceHighToLow" checked>  Price : High-Low<br>
-                </div>
-              </div>
-              <div class="column">
-                <div class="form-group" style="float:right">
-                  <p class="extraPadd"></p>
+                <div class="form-group" style="float:left">
                   <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
                 </div>
               </div>
@@ -125,14 +120,14 @@
           <p>Search by description of procedure</p>
           <form action="#">
             <div class="form-group" >
-              <div class="tooltip">Description:
+              <div class="tooltip">Description: 
                 <span class="tooltiptext">Enter a description of your procedure</span>
               </div>
               <span> <input type="text" class="form-control" name="prodDesc" placeholder="Chest Pain"></span>
             </div>
 
             <div class="form-group">
-              <div class="tooltip">Location:
+              <div class="tooltip">Location: 
                 <span class="tooltiptext">Enter a state, address or zip code</span>
               </div>
               <span> <input type="address1" class="form-control" name="location" placeholder="Location"></span>
@@ -147,35 +142,26 @@
               <option value="Anywhere">Anywhere</option>
             </select></span></p>
 
-
+           
             <div class="row1">
               <div class="column1" style="text-align:center">
-                <p>Min Price: <span id="demo2"></span></p>
+                <p>Min Price: $<span id="demo2"></span></p>
               </div>
               <div class="column2" >
                 <div class="price-slider">
-                  <input type="range" min="2000" max="3000000" value="2000" name="minPrice" class="slider2" id="minPrice1" step = 1000>
-                  <input type="range" min="2000" max="3000000" value="3000000" name="maxPrice" class="slider3" id="maxPrice1" step = 1000>
+                  <input type="range" min="2000" max="3000000" value="2000" name="minPrice" class="slider2" id="minPrice1" step = 500>
+                  <input type="range" min="2000" max="3000000" value="3000000" name="maxPrice" class="slider3" id="maxPrice1" step = 500>
                 </div>
               </div>
               <div class="column1" style="text-align:center">
-                <p>Max Price: <span id="demo3"></span></p>
+                <p>Max Price: $<span id="demo3"></span></p>
               </div>
             </div>
 
 
             <div class="row">
               <div class="column">
-                <div class="form-group" >
-                  <p>Order results by :</p>
-                  <input type="radio" name="orderBy" value="closest" checked>  Distance<br>
-                  <input type="radio" name="orderBy" value="priceLowToHigh" checked>  Price : Low-High<br>
-                  <input type="radio" name="orderBy" value="priceHighToLow" checked>  Price : High-Low<br>
-                </div>
-              </div>
-              <div class="column">
-                <div class="form-group" style="float:right">
-                  <p class="extraPadd"></p>
+                <div class="form-group" style="float:left">
                   <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
                 </div>
               </div>
@@ -187,17 +173,68 @@
 
 
       <!--START Output-->
-      <div class="row">
-        <div class="column" style="text-align: center">
-          <div id = "output">
-            <p >Table goes here</p>
-            <!--######################CODE FOR TABLE GOES HERE########################-->
+      <div class="row" style=" margin-left:10%; padding-bottom: 10px">
+          <div id = "output" style="width:80%" align="center" style="padding-bottom: 10px"> 
+            <table id="example" class="display" style="width:100%">
+              <script></script>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td>Garrett Winters</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>63</td>
+                <td>2011/07/25</td>
+                <td>$170,750</td>
+            </tr>
+            <tr>
+                <td>Olivia Liang</td>
+                <td>Support Engineer</td>
+                <td>Singapore</td>
+                <td>64</td>
+                <td>2011/02/03</td>
+                <td>$234,500</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <script>
+              $(document).ready(function() {
+                  $('#example').DataTable();
+              } );
+            </script>
           </div>
-        </div>
-        <div class="column4">
-          <div id="map"></div>
-        </div>
       </div>
+
+          <div id="map" width="70%"></div>
+        
       <!--END Output-->
     </div>
   </section>
@@ -231,6 +268,7 @@
 
 
   <script>
+
     var slider = document.getElementById("minPrice");
     var output = document.getElementById("demo");
 
@@ -383,7 +421,9 @@
       markersArray = [];
     }
   </script>
-<script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+ <script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
 <script src="{{url_for('static', filename='js/jquery-migrate-3.0.1.min.js')}}"></script>
 <script src="{{url_for('static', filename='js/popper.min.js')}}"></script>
 <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
@@ -400,6 +440,5 @@
 <!-- The async attribute allows the browser to render the page while the API loads -->
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCodmwd7VVmMb19CaPLKQOOmm5srQDVhz4&callback=initMap"></script>
 <script src="{{url_for('static', filename='js/main.js')}}"></script>
-
   </body>
 </html>
