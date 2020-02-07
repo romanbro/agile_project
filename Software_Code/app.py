@@ -14,11 +14,10 @@ mysql.init_app(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def hello_world():
-    data = "x"
     conn = mysql.connect()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM medicare WHERE provider_state = 'FL' LIMIT 2;")
-    row = cursor.fetchone()
+    cursor.execute("SELECT * FROM medicare WHERE provider_state = 'FL' LIMIT 5;")
+    # row = cursor.fetchone()
     data = cursor.fetchall()
     items = [dict(zip([key[0] for key in cursor.description], row)) for row in data]
     json_data = json.dumps(items)

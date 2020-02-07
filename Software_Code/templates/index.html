@@ -9,7 +9,11 @@
         <link rel="stylesheet" href="{{url_for('static', filename='css/animate.css')}}">
         <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
       <link rel="icon" href="{{url_for('static', filename='heart.jpg')}}">
-  </head>
+  
+      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+      <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">  </head>
   <body>
 
 
@@ -57,7 +61,7 @@
         <!--START User Input Code Form-->
         <div id="Code" class="tabcontent">
           <p>Search by code of procedure</p>
-          <form action="#">
+          <form action=#>
 
 
 
@@ -85,7 +89,7 @@
 
             <div class="row1">
               <div class="column1" style="text-align:center">
-                <p>Min Price: <span id="demo"></span></p>
+                <p>Min Price: $<span id="demo"></span></p>
               </div>
               <div class="column2" >
                 <div class="price-slider">
@@ -94,14 +98,14 @@
                 </div>
               </div>
               <div class="column1" style="text-align:center">
-                <p>Max Price: <span id="demo1"></span></p>
+                <p>Max Price: $<span id="demo1"></span></p>
               </div>
             </div>
 
 
             <div class="row">
               <div class="column">
-                <p>Order results by:</p>
+                <!-- <p>Order results by:</p>
                 <div class="form-group" >
                   <input type="radio" name="orderBy" value="closest" checked>  Distance<br>
                   <input type="radio" name="orderBy" value="priceLowToHigh" checked>  Price : Low-High<br>
@@ -110,7 +114,9 @@
               </div>
               <div class="column">
                 <div class="form-group" style="float:right">
-                  <p class="extraPadd"></p>
+                  <p class="extraPadd"></p> -->
+                  <div class="form-group" style="float:left">
+
                   <input onclick="codeAddress()" type="submit" value="Search" class="btn btn-primary py-3 px-5">
                 </div>
               </div>
@@ -150,7 +156,7 @@
 
             <div class="row1">
               <div class="column1" style="text-align:center">
-                <p>Min Price: <span id="demo2"></span></p>
+                <p>Min Price: $<span id="demo2"></span></p>
               </div>
               <div class="column2" >
                 <div class="price-slider">
@@ -159,7 +165,7 @@
                 </div>
               </div>
               <div class="column1" style="text-align:center">
-                <p>Max Price: <span id="demo3"></span></p>
+                <p>Max Price: $<span id="demo3"></span></p>
               </div>
             </div>
 
@@ -167,7 +173,7 @@
             <div class="row">
               <div class="column">
                 <div class="form-group" >
-                  <p>Order results by :</p>
+                  <!-- <p>Order results by :</p>
                   <input type="radio" name="orderBy" value="closest" checked>  Distance<br>
                   <input type="radio" name="orderBy" value="priceLowToHigh" checked>  Price : Low-High<br>
                   <input type="radio" name="orderBy" value="priceHighToLow" checked>  Price : High-Low<br>
@@ -175,7 +181,9 @@
               </div>
               <div class="column">
                 <div class="form-group" style="float:right">
-                  <p class="extraPadd"></p>
+                  <p class="extraPadd"></p> -->
+                  <div class="form-group" style="float:left">
+
                   <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
                 </div>
               </div>
@@ -188,16 +196,16 @@
 
       <!--START Output-->
       <div class="row">
-        <div class="column" style="text-align: center">
-          <div id = "output">
-            <p >Table goes here</p>
+        <div class="column" style="text-align: center; padding: 20px">
+          <div id = "showData">
             <!--######################CODE FOR TABLE GOES HERE########################-->
           </div>
         </div>
-        <div class="column4">
-          <div id="map"></div>
-        </div>
+        
+          
+        
       </div>
+      <div id="map"></div>
       <!--END Output-->
     </div>
   </section>
@@ -208,7 +216,7 @@
       <div class="container">
         <div class="row d-flex justify-content-center">
           <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-            <!--<h2>Contact Details</h2>-->
+            <h2>Contact Details</h2>
             <p></p>
           </div>
         </div>
@@ -263,6 +271,54 @@
       output3.innerHTML = this.value;
     }
   </script>
+
+<script> 
+  function CreateTableFromJSON() {
+      
+      // EXTRACT VALUE FOR HTML HEADER. 
+      // 
+      var col = [];
+      for (var i = 0; i < database.length; i++) {
+          for (var key in database[i]) {
+              if (col.indexOf(key) === -1) {
+                  col.push(key);
+              }
+          }
+      }
+
+      // CREATE DYNAMIC TABLE.
+      var table = document.createElement("table");
+      table.setAttribute("id", "example");
+
+      // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+      var header = table.createTHead();
+      var tr = header.insertRow(-1);                   // TABLE ROW.
+
+      for (var i = 0; i < col.length; i++) {
+          var th = document.createElement("th");      // TABLE HEADER.
+          th.innerHTML = col[i];
+          tr.appendChild(th);
+      }
+
+      // ADD JSON DATA TO THE TABLE AS ROWS.
+      var body = table.createTBody();
+      for (var i = 0; i < database.length; i++) {
+
+          tr = body.insertRow(-1);
+
+          for (var j = 0; j < col.length; j++) {
+              var tabCell = tr.insertCell(-1);
+              tabCell.innerHTML = database[i][col[j]];
+          }
+      }
+
+      // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+      var divContainer = document.getElementById("showData");
+      divContainer.innerHTML = "";
+      divContainer.appendChild(table);
+  }
+</script>
+
   <script> var map, destinationIcon, originIcon, bounds, geocoder, pos, markersArray, infoWindow
     var database = JSON.parse('{{ data | safe }}');
     var addresses = []
@@ -325,8 +381,8 @@
         } else {
           var originList = response.originAddresses;
           var destinationList = response.destinationAddresses;
-          var outputDiv = document.getElementById('output');
-          outputDiv.innerHTML = '';
+          // var outputDiv = document.getElementById('output');
+          // outputDiv.innerHTML = "";
           deleteMarkers(markersArray);
 
           var showGeocodedAddressOnMap = function (asDestination, address) {
@@ -367,14 +423,33 @@
             for (var j = 0; j < results.length; j++) {
               geocoder.geocode({ 'address': destinationList[j] },
                 showGeocodedAddressOnMap(true, destinationList[j]));
-                database[j].distance = results[j].distance.text;
+                console.log(database)
+                database[j]["distance"] = results[j].distance.text;
+                delete database[j].hospital_referral_region_description;
+                delete database[j].total_discharges;
+                delete database[j].id;
+                delete database[j].provider_id;
+                delete database[j].provider_zip_code;
+                delete database[j].provider_state;
+                delete database[j].average_total_payments;
+                delete database[j].average_covered_charges;
+                delete database[j].provider_city;
+                delete database[j].provider_street_address;
+                console.log(database)
                 console.log(results[j].distance.text)
-                console.log(distance[j].distance)
-              outputDiv.innerHTML += originList[i] + ' to ' + destinationList[j] +
-                ': ' + results[j].distance.text + ' in ' +
-                results[j].duration.text + '<br>';
+                console.log(database[j].distance)
+              // outputDiv.innerHTML += originList[i] + ' to ' + destinationList[j] +
+              //   ': ' + results[j].distance.text + ' in ' +
+              //   results[j].duration.text + '<br>';
             }
           }
+          CreateTableFromJSON();
+          
+          $(document).ready(function() {
+              $('#example').DataTable();
+              // data: database
+          } );
+        
         }
       });
     }
@@ -385,8 +460,12 @@
       }
       markersArray = [];
     }
+    
   </script>
-<script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
+  <!-- // https://www.encodedna.com/javascript/populate-json-data-to-html-table-using-javascript.htm -->
+  
+
+<!-- <script src="{{url_for('static', filename='js/jquery.min.js')}}"></script> -->
 <script src="{{url_for('static', filename='js/jquery-migrate-3.0.1.min.js')}}"></script>
 <script src="{{url_for('static', filename='js/popper.min.js')}}"></script>
 <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
@@ -403,6 +482,8 @@
 <!-- The async attribute allows the browser to render the page while the API loads -->
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCodmwd7VVmMb19CaPLKQOOmm5srQDVhz4&callback=initMap"></script>
 <script src="{{url_for('static', filename='js/main.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
   </body>
 </html>
